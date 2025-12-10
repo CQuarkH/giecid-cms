@@ -35,8 +35,8 @@ plugins:
 
 title: "GIECID"
 description: "Grupo de Investigación en Educación en Contextos Indígenas y Diversos"
-url: "https://cquarkh.github.io"
-baseurl: "/giecid-cms"
+url: "https://giecid.netlify.app/"
+baseurl: ""
 
 include:
   - admin
