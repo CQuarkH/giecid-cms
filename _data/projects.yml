@@ -1,0 +1,16 @@
+projects:
+  - name: "Revitalización Lingüística en Escuelas Rurales de la Araucanía"
+    funding_source: "ANID Fondecyt Regular Nº 1234567"
+    members: "Huenchulaf, M. (IP), Pérez, J., González, A."
+    year_start: 2024
+    year_end: 2026
+    description: "Este proyecto investiga las estrategias pedagógicas utilizadas por docentes tradicionales para la enseñanza del Mapudungun en contextos escolares formales, proponiendo un modelo de integración curricular."
+    url: "https://anid.cl/proyectos/ejemplo"
+
+  - name: "Saberes Ancestrales y Tecnología Digital"
+    funding_source: "Fondo de Innovación Docente"
+    members: "Torres, L., Catrileo, P."
+    year_start: 2023
+    year_end: 2024
+    description: "Desarrollo de herramientas digitales colaborativas para la preservación de relatos orales en comunidades costeras."
+    url: ""

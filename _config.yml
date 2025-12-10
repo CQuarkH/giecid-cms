@@ -46,6 +46,11 @@ collections:
   publications:
     output: true
     permalink: /publications/:name
+
+  members:
+    output: true
+    permalink: /members/:path/
+
   news:
     output: true
     permalink: /news/:name
@@ -54,3 +59,16 @@ collections:
 exclude:
   - README.md
   - Gemfile.lock
+
+defaults:
+  - scope:
+      path: ""
+      type: "members" # Aplica a toda la colección 'members'
+    values:
+      layout: "member" # Usa el archivo _layouts/member.html
+
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication"

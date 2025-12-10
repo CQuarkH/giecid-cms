@@ -3,7 +3,7 @@ layout: default
 title: Contacto
 ---
 
-{% include header.html %}
+{% include header.html %} {% assign data = site.data.contact_data %}
 
 <div class="contact-page">
   <div class="container">
@@ -21,19 +21,17 @@ title: Contacto
           </svg>
           <div>
             <strong>Email</strong>
-            {% if site.data.site_info.contact_email %}
             <p>
-              <a href="mailto:{{ site.data.site_info.contact_email }}"
-                >{{ site.data.site_info.contact_email }}</a
+              <a
+                href="mailto:{{ data.contact_email | default: 'contacto@giecid.cl' }}"
               >
+                {{ data.contact_email | default: 'contacto@giecid.cl' }}
+              </a>
             </p>
-            {% else %}
-            <p>contacto@giecid.cl</p>
-            {% endif %}
           </div>
         </div>
 
-        {% if site.data.site_info.phone %}
+        {% if data.phone %}
         <div class="info-item">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
             <path
@@ -42,10 +40,10 @@ title: Contacto
           </svg>
           <div>
             <strong>Teléfono</strong>
-            <p>{{ site.data.site_info.phone }}</p>
+            <p>{{ data.phone }}</p>
           </div>
         </div>
-        {% endif %} {% if site.data.site_info.address %}
+        {% endif %} {% if data.address %}
         <div class="info-item">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
             <path
@@ -54,10 +52,10 @@ title: Contacto
           </svg>
           <div>
             <strong>Dirección</strong>
-            <p>{{ site.data.site_info.address }}</p>
+            <p>{{ data.address }}</p>
           </div>
         </div>
-        {% endif %} {% if site.data.site_info.institution %}
+        {% endif %} {% if data.institution %}
         <div class="info-item">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
             <path
@@ -69,26 +67,23 @@ title: Contacto
           </svg>
           <div>
             <strong>Institución</strong>
-            <p>{{ site.data.site_info.institution }}</p>
+            <p>{{ data.institution }}</p>
           </div>
         </div>
-        {% endif %}
-
-        <!-- Redes Sociales -->
-        {% if site.data.site_info.facebook or site.data.site_info.twitter or
-        site.data.site_info.linkedin %}
+        {% endif %} {% if data.facebook or data.twitter or data.linkedin %}
         <div class="social-links">
           <h3>Síguenos</h3>
           <div class="social-icons">
-            {% if site.data.site_info.facebook %}
+            {% if data.facebook %}
             <a
-              href="{{ site.data.site_info.facebook }}"
+              href="{{ data.facebook }}"
               target="_blank"
               class="social-icon"
+              aria-label="Facebook"
             >
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 fill="currentColor"
                 viewBox="0 0 16 16"
               >
@@ -97,15 +92,16 @@ title: Contacto
                 />
               </svg>
             </a>
-            {% endif %} {% if site.data.site_info.twitter %}
+            {% endif %} {% if data.twitter %}
             <a
-              href="{{ site.data.site_info.twitter }}"
+              href="{{ data.twitter }}"
               target="_blank"
               class="social-icon"
+              aria-label="Twitter"
             >
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 fill="currentColor"
                 viewBox="0 0 16 16"
               >
@@ -114,15 +110,16 @@ title: Contacto
                 />
               </svg>
             </a>
-            {% endif %} {% if site.data.site_info.linkedin %}
+            {% endif %} {% if data.linkedin %}
             <a
-              href="{{ site.data.site_info.linkedin }}"
+              href="{{ data.linkedin }}"
               target="_blank"
               class="social-icon"
+              aria-label="LinkedIn"
             >
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 fill="currentColor"
                 viewBox="0 0 16 16"
               >
@@ -140,15 +137,12 @@ title: Contacto
       <div class="contact-form-section">
         <h2>Envíanos un mensaje</h2>
         <p class="form-description">
-          Si tienes alguna consulta o deseas más información sobre nuestro
-          trabajo, no dudes en contactarnos a través del siguiente formulario o
-          al email indicado.
+          Si tienes alguna consulta, no dudes en contactarnos.
         </p>
 
-        <!-- Formulario simple con mailto -->
         <form
           class="contact-form"
-          action="mailto:{{ site.data.site_info.contact_email | default: 'contacto@giecid.cl' }}"
+          action="mailto:{{ data.contact_email | default: 'contacto@giecid.cl' }}"
           method="post"
           enctype="text/plain"
         >
@@ -156,43 +150,91 @@ title: Contacto
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" required />
           </div>
-
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required />
           </div>
-
           <div class="form-group">
             <label for="subject">Asunto</label>
             <input type="text" id="subject" name="subject" required />
           </div>
-
           <div class="form-group">
             <label for="message">Mensaje</label>
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
-
           <button type="submit" class="btn-submit">Enviar Mensaje</button>
         </form>
-
-        <p class="form-note">
-          <small
-            >* También puedes escribirnos directamente a {{
-            site.data.site_info.contact_email | default: 'contacto@giecid.cl'
-            }}</small
-          >
-        </p>
       </div>
     </div>
+
+    {% if data.location or data.arrival_instructions %}
+    <div class="location-section">
+      <div class="arrival-info">
+        <h2>Cómo Llegar</h2>
+        <div class="arrival-content">
+          {% if data.arrival_instructions %}
+          <ul class="arrival-list">
+            {% for item in data.arrival_instructions %}
+            <li>
+              <svg
+                class="check-icon"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              {{ item.instruction }}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          <div class="location-details">
+            <p>
+              <strong>Estamos ubicados en:</strong><br />
+              {{ data.address | default: "Temuco, Chile" }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container">
+        {% if data.location.lat and data.location.lng %}
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?q={{ data.location.lat }},{{ data.location.lng }}&hl=es&z=15&amp;output=embed"
+        >
+        </iframe>
+        {% else %}
+        <div class="map-placeholder">
+          <p>Mapa no configurado (Faltan coordenadas en Admin)</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
   </div>
 </div>
 
 <style>
+  /* --- ESTILOS BASE (Ya existentes) --- */
   .contact-page {
     min-height: 60vh;
     padding: 3rem 0;
   }
-
   .contact-page h1 {
     font-size: 2.5rem;
     color: #333;
@@ -200,86 +242,69 @@ title: Contacto
     padding-bottom: 1rem;
     border-bottom: 3px solid #667eea;
   }
-
   .contact-content {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 4rem;
     margin-top: 2rem;
   }
-
-  /* Info de contacto */
-  .contact-info h2 {
+  .contact-info h2,
+  .contact-form-section h2,
+  .arrival-info h2 {
     font-size: 1.75rem;
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
+  /* Info Items */
   .info-item {
     display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #f0f0f0;
   }
-
   .info-item svg {
     color: #667eea;
     flex-shrink: 0;
     margin-top: 0.25rem;
   }
-
   .info-item strong {
     display: block;
     color: #333;
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
   }
-
   .info-item p {
     color: #666;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.5;
   }
-
   .info-item a {
     color: #667eea;
     text-decoration: none;
   }
 
-  .info-item a:hover {
-    text-decoration: underline;
-  }
-
-  /* Redes sociales */
+  /* Redes Sociales */
   .social-links {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
-
-  .social-links h3 {
-    font-size: 1.25rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-
   .social-icons {
     display: flex;
     gap: 1rem;
+    margin-top: 1rem;
   }
-
   .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: #f8f9fa;
     color: #667eea;
     transition: all 0.3s;
-    text-decoration: none;
   }
-
   .social-icon:hover {
     background: #667eea;
     color: white;
@@ -287,57 +312,33 @@ title: Contacto
   }
 
   /* Formulario */
-  .contact-form-section h2 {
-    font-size: 1.75rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-
-  .form-description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
   .contact-form {
     background: #f8f9fa;
     padding: 2rem;
     border-radius: 8px;
   }
-
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
   }
-
   .form-group label {
     display: block;
     color: #333;
     font-weight: 500;
     margin-bottom: 0.5rem;
   }
-
   .form-group input,
   .form-group textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 1rem;
     font-family: inherit;
-    transition: border-color 0.3s;
   }
-
   .form-group input:focus,
   .form-group textarea:focus {
     outline: none;
     border-color: #667eea;
   }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
   .btn-submit {
     width: 100%;
     padding: 1rem;
@@ -345,21 +346,71 @@ title: Contacto
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
   }
-
   .btn-submit:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
   }
 
-  .form-note {
-    margin-top: 1rem;
-    text-align: center;
-    color: #666;
+  /* --- NUEVA SECCIÓN: MAPA Y UBICACIÓN --- */
+  .location-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid #e2e8f0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mitad instrucciones, mitad mapa */
+    gap: 3rem;
+  }
+
+  .arrival-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+  }
+
+  .arrival-list li {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+
+  .check-icon {
+    color: #48bb78; /* Verde */
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .location-details {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    color: #4a5568;
+  }
+
+  /* Contenedor del Mapa */
+  .map-container {
+    width: 100%;
+    min-height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #eee;
+    position: relative;
+  }
+
+  .map-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #999;
   }
 
   /* Responsive */
@@ -368,20 +419,13 @@ title: Contacto
       grid-template-columns: 1fr;
       gap: 3rem;
     }
-  }
-
-  @media (max-width: 768px) {
-    .contact-page h1 {
-      font-size: 2rem;
+    .location-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
     }
-
-    .contact-info h2,
-    .contact-form-section h2 {
-      font-size: 1.5rem;
-    }
-
-    .contact-form {
-      padding: 1.5rem;
+    .map-container {
+      min-height: 300px;
     }
   }
 </style>

@@ -24,24 +24,65 @@ title: Proyectos
       {% for project in projects %}
       <div class="project-card" data-year="{{ project.year_start }}">
         <div class="card-header">
-          <h2>{{ project.name }}</h2>
-          <div class="project-meta">
+          <div class="meta-top">
             <span class="date-badge">
               {{ project.year_start }} {% if project.year_end %} - {{
               project.year_end }}{% else %} - Presente{% endif %}
             </span>
+            {% if project.funding_source %}
+            <span class="funding-badge"> {{ project.funding_source }} </span>
+            {% endif %}
+          </div>
+
+          <h2>{{ project.name }}</h2>
+        </div>
+
+        <div class="project-body">
+          {% if project.members %}
+          <div class="project-members">
+            <svg
+              class="icon-small"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
+            </svg>
+            <span><strong>Equipo:</strong> {{ project.members }}</span>
+          </div>
+          {% endif %}
+
+          <div class="project-description">
+            <p>{{ project.description }}</p>
           </div>
         </div>
 
-        <div class="project-content">
-          <p>{{ project.description }}</p>
-        </div>
-
         {% if project.url %}
-        <div class="project-links">
-          <a href="{{ project.url }}" class="btn-sm" target="_blank"
-            >Ver Proyecto</a
-          >
+        <div class="project-footer">
+          <a href="{{ project.url }}" class="link-btn" target="_blank">
+            Ver Proyecto
+            <svg
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
         </div>
         {% endif %}
       </div>
@@ -56,18 +97,11 @@ title: Proyectos
 </div>
 
 <style>
-  /* --- Estilos Generales (Heredados de Publicaciones para consistencia) --- */
+  /* --- Estructura General --- */
   .projects-page {
     min-height: 60vh;
     padding: 3rem 0;
   }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
   .projects-page h1 {
     font-size: 2.5rem;
     color: #333;
@@ -86,7 +120,6 @@ title: Proyectos
     background: #f8f9fa;
     border-radius: 8px;
   }
-
   .filter-btn {
     padding: 0.5rem 1.25rem;
     border: 2px solid #e0e0e0;
@@ -96,91 +129,129 @@ title: Proyectos
     border-radius: 6px;
     font-weight: 500;
     transition: all 0.3s;
-    font-size: 0.95rem;
   }
-
-  .filter-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
-    transform: translateY(-2px);
-  }
-
+  .filter-btn:hover,
   .filter-btn.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border-color: #667eea;
   }
 
-  /* --- Tarjetas de Proyectos --- */
+  /* --- Tarjetas --- */
   .projects-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
   }
 
   .project-card {
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 2rem;
+    border-radius: 12px;
+    padding: 1.5rem;
     background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
   .project-card:hover {
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
-    transform: translateY(-4px);
-    border-color: #667eea;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15);
+    border-color: #dbeafe;
   }
 
-  .card-header h2 {
-    font-size: 1.4rem;
-    color: #333;
+  /* Header de la tarjeta */
+  .meta-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-bottom: 1rem;
-    line-height: 1.3;
-  }
-
-  .project-meta {
-    margin-bottom: 1.5rem;
   }
 
   .date-badge {
-    display: inline-block;
-    background: #f0f2fd;
-    color: #667eea;
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.85rem;
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
     font-weight: 600;
-    border: 1px solid #dae1f7;
+  }
+  .funding-badge {
+    background: #fff7ed;
+    color: #c2410c;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #ffedd5;
   }
 
-  .project-content {
+  .card-header h2 {
+    font-size: 1.35rem;
+    color: #1a202c;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+  }
+
+  /* Cuerpo */
+  .project-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-members {
+    display: flex;
+    gap: 0.5rem;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    background: #f7fafc;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+  .icon-small {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #718096;
+  }
+
+  .project-description {
     color: #555;
-    line-height: 1.6;
     font-size: 0.95rem;
-    flex-grow: 1; /* Esto hace que las tarjetas se alineen mejor si el texto varía */
+    line-height: 1.6;
   }
 
-  .no-projects {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: #666;
-    font-size: 1.1rem;
+  /* Footer / Links */
+  .project-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #667eea;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .link-btn:hover {
+    color: #5568d3;
+    text-decoration: underline;
   }
 
   /* --- Responsive --- */
   @media (max-width: 768px) {
     .projects-list {
       grid-template-columns: 1fr;
-    }
-
-    .projects-page h1 {
-      font-size: 2rem;
     }
   }
 </style>
@@ -193,19 +264,14 @@ title: Proyectos
     filterButtons.forEach((button) => {
       button.addEventListener("click", function () {
         const year = this.dataset.year;
-
-        // Actualizar estado visual de los botones
         filterButtons.forEach((btn) => btn.classList.remove("active"));
         this.classList.add("active");
 
-        // Filtrar proyectos
         projects.forEach((proj) => {
           if (year === "all" || proj.dataset.year === year) {
-            // Mostrar
-            proj.style.display = "flex"; // Usamos flex porque la tarjeta es flex
+            proj.style.display = "flex";
             proj.style.animation = "fadeIn 0.4s ease-out forwards";
           } else {
-            // Ocultar
             proj.style.display = "none";
           }
         });
@@ -213,13 +279,7 @@ title: Proyectos
     });
   });
 
-  // Inyectar animación
   const styleSheet = document.createElement("style");
-  styleSheet.textContent = `
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  `;
+  styleSheet.textContent = `@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`;
   document.head.appendChild(styleSheet);
 </script>

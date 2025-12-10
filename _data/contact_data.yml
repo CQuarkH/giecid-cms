@@ -1,0 +1,19 @@
+group_name: "GIECID"
+full_name: "Grupo de Investigación en Educación en Contextos Indígenas y Diversos"
+contact_email: "contacto@giecid.cl"
+description: "Investigación en educación intercultural e indígena"
+institution: "Universidad Ejemplo"
+address: "Campus Norte, Temuco"
+
+# --- Configuración del Mapa ---
+location:
+  lat: -38.70286605344821
+  lng: -72.54804535107422
+  zoom: 15
+
+# --- Cómo Llegar ---
+arrival_instructions:
+  - instruction: "Rutas de buses públicos que sirven al centro de Temuco"
+  - instruction: "Distancia caminable desde la Plaza de Armas"
+  - instruction: "Servicios de taxi y transporte compartido"
+  - instruction: "Rutas para bicicletas a través del centro de Temuco"

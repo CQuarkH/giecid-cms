@@ -4,7 +4,6 @@ layout: default
 
 {% include header.html %}
 
-<!-- Hero Section -->
 <div class="hero-section">
   <div class="hero-content">
     <img
@@ -21,7 +20,6 @@ layout: default
   </div>
 </div>
 
-<!-- Sobre Nosotros Section -->
 <section class="about-section">
   <div class="container">
     <h2>{{ site.data.about.title | default: "Sobre Nosotros" }}</h2>
@@ -53,74 +51,46 @@ layout: default
   </div>
 </section>
 
-<!-- Proyectos Destacados -->
-{% if site.data.home.show_featured_projects %}
-<section class="featured-projects">
+<section class="team-preview">
   <div class="container">
-    <h2>Proyectos Destacados</h2>
+    <h2>Nuestro Equipo</h2>
 
-    {% assign featured_projects = site.data.projects.projects | where:
-    "featured", true %} {% if featured_projects.size > 0 %}
-    <div class="projects-grid">
-      {% for project in featured_projects limit:3 %}
-      <div class="project-card">
-        {% if project.image %}
-        <img src="{{ project.image }}" alt="{{ project.name }}" />
+    {% if site.members %} {% assign active_members = site.members | sort:
+    "order" %} {% else %} {% assign active_members = "" | split: "" %} {% endif
+    %} {% if active_members.size > 0 %}
+    <div class="members-carousel">
+      {% for member in active_members limit:6 %}
+      <div class="member-card-small">
+        {% if member.photo %}
+        <img src="{{ member.photo }}" alt="{{ member.title }}" />
+        {% else %}
+        <div class="member-placeholder">{{ member.title | slice: 0 }}</div>
         {% endif %}
 
-        <h3>{{ project.name }}</h3>
-
-        {% if project.acronym %}
-        <span class="project-acronym">{{ project.acronym }}</span>
-        {% endif %}
-
-        <p>{{ project.description_short }}</p>
-
-        <div class="project-meta">
-          <span class="project-year">
-            {{ project.year_start }} {% if project.year_end %} - {{
-            project.year_end }} {% else %} - Presente {% endif %}
-          </span>
-
-          <span class="project-status status-{{ project.status }}">
-            {% if project.status == "active" %}En Curso{% endif %} {% if
-            project.status == "completed" %}Finalizado{% endif %} {% if
-            project.status == "planned" %}Planificado{% endif %}
-          </span>
-        </div>
-
-        {% if project.link %}
-        <a href="{{ project.link }}" class="btn btn-sm" target="_blank"
-          >Más información</a
-        >
-        {% endif %}
+        <h4>{{ member.title }}</h4>
+        <p class="position">{{ member.position }}</p>
       </div>
       {% endfor %}
     </div>
 
     <div class="text-center mt-4">
-      <a href="/projects.html" class="btn btn-primary"
-        >Ver todos los proyectos</a
+      <a href="/members.html" class="btn btn-primary"
+        >Conocer al equipo completo</a
       >
     </div>
-    {% else %}
-    <p>No hay proyectos destacados en este momento.</p>
     {% endif %}
   </div>
 </section>
-{% endif %}
 
-<!-- Últimas Publicaciones -->
 {% if site.data.home.show_recent_publications %}
 <section class="recent-publications">
   <div class="container">
     <h2>Publicaciones Recientes</h2>
 
-    {% assign count = site.data.home.recent_publications_count | default: 5 %}
-    {% assign recent_pubs = site.publications | where: "status", "published" |
-    sort: 'year' | reverse %} {% if recent_pubs.size > 0 %}
+    {% assign recent_pubs = site.publications | sort: 'date' | reverse %} {% if
+    recent_pubs.size > 0 %}
     <div class="publications-list">
-      {% for pub in recent_pubs limit:count %}
+      {% for pub in recent_pubs limit:3 %}
       <div class="publication-item">
         <h3>{{ pub.title }}</h3>
 
@@ -129,7 +99,7 @@ layout: default
         <p class="venue">
           <em>{{ pub.venue }}</em>
           {% if pub.volume %}, {{ pub.volume }}{% endif %} {% if pub.pages %},
-          pp. {{ pub.pages }}{% endif %} , {{ pub.year }}
+          pp. {{ pub.pages }}{% endif %} , {{ pub.date | date: "%Y" }}
         </p>
 
         <div class="pub-links">
@@ -163,63 +133,6 @@ layout: default
     {% else %}
     <p>No hay publicaciones disponibles.</p>
     {% endif %}
-  </div>
-</section>
-{% endif %}
-
-<!-- Miembros del Equipo Preview -->
-<section class="team-preview">
-  <div class="container">
-    <h2>Nuestro Equipo</h2>
-
-    {% assign active_members = site.data.members.members | where: "active", true
-    | sort: "order" %} {% if active_members.size > 0 %}
-    <div class="members-carousel">
-      {% for member in active_members limit:6 %}
-      <div class="member-card-small">
-        {% if member.photo %}
-        <img src="{{ member.photo }}" alt="{{ member.name }}" />
-        {% else %}
-        <div class="member-placeholder">{{ member.name | slice: 0 }}</div>
-        {% endif %}
-
-        <h4>{{ member.name }}</h4>
-        <p class="position">{{ member.position }}</p>
-      </div>
-      {% endfor %}
-    </div>
-
-    <div class="text-center mt-4">
-      <a href="/members.html" class="btn btn-primary"
-        >Conocer al equipo completo</a
-      >
-    </div>
-    {% endif %}
-  </div>
-</section>
-
-<!-- Últimas Noticias (Opcional) -->
-{% if site.news.size > 0 %}
-<section class="recent-news">
-  <div class="container">
-    <h2>Noticias</h2>
-
-    {% assign recent_news = site.news | where: "published", true | sort: 'date'
-    | reverse %}
-
-    <div class="news-list">
-      {% for news in recent_news limit:3 %}
-      <div class="news-item">
-        <span class="news-date">{{ news.date | date: "%d/%m/%Y" }}</span>
-        <h3>{{ news.title }}</h3>
-        <p>{{ news.content | strip_html | truncate: 200 }}</p>
-
-        {% if news.image %}
-        <img src="{{ news.image }}" alt="{{ news.title }}" class="news-image" />
-        {% endif %}
-      </div>
-      {% endfor %}
-    </div>
   </div>
 </section>
 {% endif %}
@@ -468,21 +381,16 @@ layout: default
   }
 
   .group-photo {
-    max-width: 300px; /* Un poco más ancho para dar impacto */
+    max-width: 300px;
     width: 100%;
     height: auto;
-    border-radius: 12px; /* Bordes un poco más suaves */
+    border-radius: 12px;
     margin-bottom: 2.5rem;
-
-    /* El toque profesional: Sombra profunda y borde translúcido */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border: 4px solid rgba(255, 255, 255, 0.15); /* Marco sutil */
-
-    /* Animación suave al cargar */
+    border: 4px solid rgba(255, 255, 255, 0.15);
     animation: fadeInUp 1s ease-out;
   }
 
-  /* Animación de entrada */
   @keyframes fadeInUp {
     from {
       opacity: 0;
