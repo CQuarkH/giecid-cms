@@ -35,8 +35,11 @@ plugins:
 
 title: "GIECID"
 description: "Grupo de Investigación en Educación en Contextos Indígenas y Diversos"
-url: "https://pavt.github.io"
-baseurl: "/katerinarias"
+url: "https://cquarkh.github.io"
+baseurl: "/giecid-cms"
+
+include:
+  - admin
 
 # Collections
 collections:
