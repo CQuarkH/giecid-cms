@@ -8,9 +8,14 @@
         class="site-logo"
       />
       {% endif %}
-      <a href="/" class="site-title"
-        >{{ site.data.site_info.group_name | default: "GIECID" }}</a
-      >
+      <a href="/" class="site-title">
+        <img
+          class="site-logo"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABPUlEQVR4nO3VvUpcURTF8Z8hYBMVtRCtrSRl/GAQfAFTWuQBYmGnmCqFNlqYJo2IWAi+gqZNmmhpI0lMJakUwZBKtBo5sIXLcO6MzoeNWbDg3n3W3X8457AvT6R13KJa4yvsY7yQnYjaVSafeqzlAGlhIFMfwTwuMIu38fw+1mo1iJscINHraSoaJ082yFabASR9wYHGahqwHu4YYDX8H1Cq1WcDeNdpgHYBurCAn7jGbyzhRRngb8aX+I65DOAzjjGDPlRwiN0yQH/GQzHgTnFWALzGeQy3ol5FrvLYLRrGvwJgETsl2U+5s0qADzGay3xS+HAZWyWANK8+1hY3sP0AT0f+Df6gp6ZPN34Vci1pD18xFu+jMdJ/xA1rWS+xEjftJn5GaQuPsNkuiFC6Pffq7RSkqAT51q6zqKs7rytpSVrYGrAAAAAASUVORK5CYII="
+          alt="external-searching-the-material-for-study-under-school-syllabus-school-light-tal-revivo"
+        />
+        {{ site.data.site_info.group_name | default: "GIECID" }}
+      </a>
     </div>
 
     <nav class="main-nav">
@@ -21,11 +26,46 @@
       </button>
 
       <ul class="nav-menu">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/members.html">Miembros</a></li>
-        <li><a href="/publications.html">Publicaciones</a></li>
-        <li><a href="/projects.html">Proyectos</a></li>
-        <li><a href="/contact.html">Contacto</a></li>
+        <li>
+          <a
+            href="/"
+            class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}"
+          >
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a
+            href="/members.html"
+            class="{% if page.url == '/members.html' %}active{% endif %}"
+          >
+            Miembros
+          </a>
+        </li>
+        <li>
+          <a
+            href="/publications.html"
+            class="{% if page.url == '/publications.html' %}active{% endif %}"
+          >
+            Publicaciones
+          </a>
+        </li>
+        <li>
+          <a
+            href="/projects.html"
+            class="{% if page.url == '/projects.html' %}active{% endif %}"
+          >
+            Proyectos
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact.html"
+            class="{% if page.url == '/contact.html' %}active{% endif %}"
+          >
+            Contacto
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -36,9 +76,10 @@
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
-    top: 0;
+    top: 1.5rem;
     z-index: 1000;
     padding: 1rem 0;
+    border-radius: 10px;
   }
 
   .header-container {
@@ -57,8 +98,7 @@
   }
 
   .site-logo {
-    height: 50px;
-    width: auto;
+    color: #667eea;
   }
 
   .site-title {
@@ -118,6 +158,12 @@
 
   .nav-menu a:hover {
     color: #667eea;
+  }
+
+  .nav-menu a.active {
+    color: #764ba2; /* Mismo color que el hover o uno distintivo */
+    font-weight: bold;
+    border-bottom: 2px solid #764ba2; /* Opcional: una línea debajo */
   }
 
   /* Mobile responsive */
