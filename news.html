@@ -1,0 +1,286 @@
+---
+layout: default
+title: Noticias
+---
+
+{% include header.html %}
+
+<div class="news-page">
+  <div class="container">
+    <h1>Noticias</h1>
+
+    {% if site.news %} {% assign all_news = site.news | sort: "date" | reverse
+    %} {% else %} {% assign all_news = "" | split: "" %} {% endif %} {% if
+    all_news.size > 0 %}
+    <div class="news-grid">
+      {% for news_item in all_news %}
+      <a href="{{ news_item.url }}" class="news-card-link">
+        <article class="news-card">
+          {% if news_item.image %}
+          <div class="news-image">
+            <img src="{{ news_item.image }}" alt="{{ news_item.title }}" />
+            {% if news_item.category %}
+            <span
+              class="news-category category-{{ news_item.category | slugify }}"
+              >{{ news_item.category }}</span
+            >
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="news-image news-placeholder">
+            <div class="placeholder-content">
+              <svg
+                width="80"
+                height="80"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            {% if news_item.category %}
+            <span
+              class="news-category category-{{ news_item.category | slugify }}"
+              >{{ news_item.category }}</span
+            >
+            {% endif %}
+          </div>
+          {% endif %}
+
+          <div class="news-content">
+            <div class="news-meta">
+              <time datetime="{{ news_item.date | date_to_xmlschema }}">
+                {% include date-es.html date=news_item.date %}
+              </time>
+            </div>
+
+            <h2 class="news-title">{{ news_item.title }}</h2>
+
+            {% if news_item.excerpt %}
+            <p class="news-excerpt">
+              {{ news_item.excerpt | strip_html | truncatewords: 30 }}
+            </p>
+            {% elsif news_item.content %}
+            <p class="news-excerpt">
+              {{ news_item.content | strip_html | truncatewords: 30 }}
+            </p>
+            {% endif %}
+
+            <span class="read-more">Leer más &rarr;</span>
+          </div>
+        </article>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-news">
+      <svg
+        width="120"
+        height="120"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      >
+        <path
+          d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+        />
+      </svg>
+      <p>No hay noticias disponibles en este momento.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .news-page {
+    min-height: 60vh;
+    padding: 3rem 0;
+  }
+
+  .news-page h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #667eea;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .news-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .news-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .news-card-link:hover .news-card {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.15);
+    border-color: #667eea;
+  }
+
+  .news-image {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .news-card-link:hover .news-image img {
+    transform: scale(1.05);
+  }
+
+  .news-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-content {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .news-category {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    backdrop-filter: blur(10px);
+  }
+
+  .category-investigacion {
+    background: rgba(102, 126, 234, 0.95);
+    color: white;
+  }
+  .category-eventos {
+    background: rgba(244, 143, 177, 0.95);
+    color: white;
+  }
+  .category-publicaciones {
+    background: rgba(129, 199, 132, 0.95);
+    color: white;
+  }
+  .category-noticias {
+    background: rgba(255, 183, 77, 0.95);
+    color: white;
+  }
+  .category-proyectos {
+    background: rgba(100, 181, 246, 0.95);
+    color: white;
+  }
+
+  .news-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-meta time {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .news-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  .news-excerpt {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .read-more {
+    margin-top: auto;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #667eea;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s;
+  }
+
+  .news-card-link:hover .read-more {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .no-news {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #999;
+  }
+
+  .no-news svg {
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+  }
+
+  .no-news p {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .news-page h1 {
+      font-size: 2rem;
+    }
+
+    .news-image {
+      height: 200px;
+    }
+  }
+</style>

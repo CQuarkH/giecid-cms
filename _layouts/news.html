@@ -1,0 +1,460 @@
+---
+layout: default
+---
+
+{% include header.html %}
+
+<div class="news-detail-page">
+  <div class="container">
+    <a href="/news.html" class="back-link">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Volver a Noticias
+    </a>
+
+    <article class="news-article">
+      {% if page.image %}
+      <div class="article-hero">
+        <img src="{{ page.image }}" alt="{{ page.title }}" class="hero-image" />
+        {% if page.category %}
+        <span class="article-category category-{{ page.category | slugify }}"
+          >{{ page.category }}</span
+        >
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <header class="article-header">
+        <div class="article-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            {% include date-es.html date=page.date %}
+          </time>
+
+          {% if page.category and page.image == nil %}
+          <span class="inline-category category-{{ page.category | slugify }}"
+            >{{ page.category }}</span
+          >
+          {% endif %}
+        </div>
+
+        <h1 class="article-title">{{ page.title }}</h1>
+
+        {% if page.excerpt %}
+        <p class="article-excerpt">{{ page.excerpt }}</p>
+        {% endif %}
+      </header>
+
+      <div class="article-content">{{ content }}</div>
+
+      <footer class="article-footer">
+        <a href="/news.html" class="btn-back">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Ver todas las noticias
+        </a>
+      </footer>
+    </article>
+
+    {% assign current_date = page.date %} {% assign related_news = site.news |
+    where_exp: "item", "item.url != page.url" | sort: 'date' | reverse %} {% if
+    related_news.size > 0 %}
+    <aside class="related-news">
+      <h2>Noticias Relacionadas</h2>
+      <div class="related-news-grid">
+        {% for news_item in related_news limit:3 %}
+        <a href="{{ news_item.url }}" class="related-card">
+          {% if news_item.image %}
+          <div class="related-image">
+            <img src="{{ news_item.image }}" alt="{{ news_item.title }}" />
+          </div>
+          {% else %}
+          <div class="related-image related-placeholder">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          {% endif %}
+          <div class="related-content">
+            <time>{{ news_item.date | date: "%d %b, %Y" }}</time>
+            <h3>{{ news_item.title }}</h3>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </aside>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .news-detail-page {
+    padding: 3rem 0;
+    min-height: 80vh;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: transform 0.2s;
+  }
+
+  .back-link:hover {
+    transform: translateX(-5px);
+  }
+
+  /* Article */
+  .news-article {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    margin-bottom: 3rem;
+  }
+
+  .article-hero {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .article-category {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    backdrop-filter: blur(10px);
+  }
+
+  .category-investigacion {
+    background: rgba(102, 126, 234, 0.95) !important;
+    color: white !important;
+  }
+  .category-eventos {
+    background: rgba(244, 143, 177, 0.95) !important;
+    color: white !important;
+  }
+  .category-publicaciones {
+    background: rgba(129, 199, 132, 0.95) !important;
+    color: white !important;
+  }
+  .category-noticias {
+    background: rgba(255, 183, 77, 0.95) !important;
+    color: white !important;
+  }
+  .category-proyectos {
+    background: rgba(100, 181, 246, 0.95) !important;
+    color: white !important;
+  }
+
+  .article-header {
+    padding: 2.5rem 3rem 1.5rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  .article-meta time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+  }
+
+  .inline-category {
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  .article-excerpt {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    font-weight: 400;
+    border-left: 4px solid #667eea;
+    padding-left: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .article-content {
+    padding: 2rem 3rem 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+  }
+
+  .article-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .article-content h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .article-content p {
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    margin-bottom: 1.25rem;
+    padding-left: 2rem;
+  }
+
+  .article-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .article-content blockquote {
+    border-left: 4px solid #667eea;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #666;
+  }
+
+  .article-content a {
+    color: #667eea;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .article-content a:hover {
+    border-bottom-color: #667eea;
+  }
+
+  .article-footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+
+  .btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  /* Related News */
+  .related-news {
+    margin-top: 4rem;
+  }
+
+  .related-news h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #eee;
+  }
+
+  .related-news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    display: block;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .related-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+    border-color: #667eea;
+  }
+
+  .related-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .related-card:hover .related-image img {
+    transform: scale(1.05);
+  }
+
+  .related-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .related-content {
+    padding: 1.25rem;
+  }
+
+  .related-content time {
+    display: block;
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .related-content h3 {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .article-hero {
+      height: 300px;
+    }
+
+    .article-header {
+      padding: 2rem 1.5rem 1rem;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+    }
+
+    .article-excerpt {
+      font-size: 1rem;
+    }
+
+    .article-content {
+      padding: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .article-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .article-content h3 {
+      font-size: 1.2rem;
+    }
+
+    .article-footer {
+      padding: 1.5rem;
+    }
+
+    .related-news-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

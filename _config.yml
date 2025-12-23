@@ -72,3 +72,9 @@ defaults:
       type: "publications"
     values:
       layout: "publication"
+
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: "news"

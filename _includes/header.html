@@ -60,6 +60,14 @@
         </li>
         <li>
           <a
+            href="/news.html"
+            class="{% if page.url == '/news.html' or page.layout == 'news' %}active{% endif %}"
+          >
+            Noticias
+          </a>
+        </li>
+        <li>
+          <a
             href="/contact.html"
             class="{% if page.url == '/contact.html' %}active{% endif %}"
           >
