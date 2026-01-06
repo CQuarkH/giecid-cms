@@ -1,0 +1,125 @@
+# Navigation
+nav:
+  home: "Home"
+  members: "Members"
+  publications: "Publications"
+  projects: "Projects"
+  news: "News"
+  contact: "Contact"
+
+# Hero / Carousel
+hero:
+  welcome: "Welcome to GIECID"
+  subtitle: "Research Group on Education in Indigenous and Diverse Contexts"
+  excellence_title: "Excellence in Research"
+  excellence_subtitle: "Generating situated and relevant knowledge"
+  collaborative_title: "Collaborative Work"
+  collaborative_subtitle: "Engagement with communities and territories"
+  team_alt: "GIECID Team"
+  research_alt: "Research"
+  community_alt: "Community"
+
+# Sections
+sections:
+  about_us: "About Us"
+  our_team: "Our Team"
+  recent_publications: "Recent Publications"
+
+# Buttons
+buttons:
+  view_full_team: "Meet the full team"
+  view_all_publications: "View all publications"
+  view_all_projects: "View all projects"
+  view_all_news: "View all news"
+  view_profile: "View Full Profile"
+  view_project: "View Project"
+  read_more: "Read more"
+  back: "Back"
+
+# Footer
+footer:
+  last_updated: "Last updated"
+
+# Contact
+contact:
+  title: "Contact Information"
+  email: "Email"
+  phone: "Phone"
+  address: "Address"
+  institution: "Institution"
+  how_to_get: "How to get there"
+  follow_us: "Follow us"
+
+# Filters
+filters:
+  all_masculine: "All"
+  all_feminine: "All"
+  filter_by: "Filter by"
+  category: "Category"
+  year: "Year"
+  type: "Type"
+
+# Members
+members:
+  title: "Team Members"
+  no_members: "No members registered"
+  position: "Position"
+  email: "Email"
+  research_areas: "Research Areas"
+  biography: "Biography"
+  publications: "Publications"
+  projects: "Projects"
+
+# Publications
+publications:
+  title: "Publications"
+  authors: "Authors"
+  venue: "Published in"
+  year: "Year"
+  abstract: "Abstract"
+  keywords: "Keywords"
+  no_publications: "No publications available"
+
+# Projects
+projects:
+  title: "Research Projects"
+  team: "Team"
+  funding: "Funding"
+  duration: "Duration"
+  status: "Status"
+  status_active: "Active"
+  status_completed: "Completed"
+  status_planned: "Planned"
+  description: "Description"
+  objectives: "Objectives"
+  no_projects: "No projects available"
+
+# News
+news:
+  title: "News"
+  recent: "Recent News"
+  date: "Date"
+  category: "Category"
+  no_news: "No news available"
+
+# General messages
+messages:
+  loading: "Loading..."
+  error: "An error has occurred"
+  no_results: "No results found"
+  coming_soon: "Coming soon"
+
+# Months (for dates)
+months:
+  jan: "Jan"
+  feb: "Feb"
+  mar: "Mar"
+  apr: "Apr"
+  may: "May"
+  jun: "Jun"
+  jul: "Jul"
+  aug: "Aug"
+  sep: "Sep"
+  oct: "Oct"
+  nov: "Nov"
+  dec: "Dec"

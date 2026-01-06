@@ -18,6 +18,13 @@
 markdown: kramdown
 plugins:
   - jekyll-email-protect
+  - jekyll-multiple-languages-plugin
+
+# Multi-language settings
+languages: ["es", "en", "fr"]
+default_lang: "es"
+exclude_from_localization: ["assets", "admin"]
+parallel_localization: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

@@ -1,0 +1,125 @@
+# Navegación
+nav:
+  home: "Inicio"
+  members: "Miembros"
+  publications: "Publicaciones"
+  projects: "Proyectos"
+  news: "Noticias"
+  contact: "Contacto"
+
+# Hero / Carousel
+hero:
+  welcome: "Bienvenidos a GIECID"
+  subtitle: "Grupo de Investigación en Educación en Contextos Indígenas y Diversos"
+  excellence_title: "Investigación de Excelencia"
+  excellence_subtitle: "Generando conocimiento situado y pertinente"
+  collaborative_title: "Trabajo Colaborativo"
+  collaborative_subtitle: "Vinculación con comunidades y territorios"
+  team_alt: "Equipo GIECID"
+  research_alt: "Investigación"
+  community_alt: "Comunidad"
+
+# Secciones
+sections:
+  about_us: "Sobre Nosotros"
+  our_team: "Nuestro Equipo"
+  recent_publications: "Publicaciones Recientes"
+
+# Botones
+buttons:
+  view_full_team: "Conocer al equipo completo"
+  view_all_publications: "Ver todas las publicaciones"
+  view_all_projects: "Ver todos los proyectos"
+  view_all_news: "Ver todas las noticias"
+  view_profile: "Ver Perfil Completo"
+  view_project: "Ver Proyecto"
+  read_more: "Leer más"
+  back: "Volver"
+
+# Footer
+footer:
+  last_updated: "Ultima actualización"
+
+# Contacto
+contact:
+  title: "Información de Contacto"
+  email: "Email"
+  phone: "Teléfono"
+  address: "Dirección"
+  institution: "Institución"
+  how_to_get: "Cómo llegar"
+  follow_us: "Síguenos"
+
+# Filtros
+filters:
+  all_masculine: "Todos"
+  all_feminine: "Todas"
+  filter_by: "Filtrar por"
+  category: "Categoría"
+  year: "Año"
+  type: "Tipo"
+
+# Miembros
+members:
+  title: "Miembros del Equipo"
+  no_members: "No hay miembros registrados"
+  position: "Cargo"
+  email: "Email"
+  research_areas: "Áreas de Investigación"
+  biography: "Biografía"
+  publications: "Publicaciones"
+  projects: "Proyectos"
+
+# Publicaciones
+publications:
+  title: "Publicaciones"
+  authors: "Autores"
+  venue: "Publicado en"
+  year: "Año"
+  abstract: "Resumen"
+  keywords: "Palabras clave"
+  no_publications: "No hay publicaciones disponibles"
+
+# Proyectos
+projects:
+  title: "Proyectos de Investigación"
+  team: "Equipo"
+  funding: "Financiamiento"
+  duration: "Duración"
+  status: "Estado"
+  status_active: "Activo"
+  status_completed: "Completado"
+  status_planned: "Planificado"
+  description: "Descripción"
+  objectives: "Objetivos"
+  no_projects: "No hay proyectos disponibles"
+
+# Noticias
+news:
+  title: "Noticias"
+  recent: "Noticias Recientes"
+  date: "Fecha"
+  category: "Categoría"
+  no_news: "No hay noticias disponibles"
+
+# Mensajes generales
+messages:
+  loading: "Cargando..."
+  error: "Ha ocurrido un error"
+  no_results: "No se encontraron resultados"
+  coming_soon: "Próximamente"
+
+# Meses (para fechas)
+months:
+  jan: "Ene"
+  feb: "Feb"
+  mar: "Mar"
+  apr: "Abr"
+  may: "May"
+  jun: "Jun"
+  jul: "Jul"
+  aug: "Ago"
+  sep: "Sep"
+  oct: "Oct"
+  nov: "Nov"
+  dec: "Dic"
