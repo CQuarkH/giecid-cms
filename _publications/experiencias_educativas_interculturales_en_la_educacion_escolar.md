@@ -1,0 +1,28 @@
+---
+title:
+  "Experiencias Educativas Interculturales en la Educación Escolar: Posibilidades
+  y Limitaciones en Contexto Indígena"
+date: 2024-01-01 09:00:00 -0300
+authors:
+  Katerin Arias-Ortega, Vanessa Valdebenito, Viviana Villarroel Cárdenas, Segundo
+  Quintriqueo Millán, Rodrigo Lagos
+venue:
+  Lineamientos Estratégicos para la Implementación de la Educación Intercultural
+  desde un Modelo de Acompañamiento
+excerpt: "Tipo: Capítulo de Libro"
+pdf_url: /assets/pdfs/productividad/PRODUCTIVIDAD_2024_KARIAS/Cap_libro_4Arias-Ortega_2024_Referato.pdf
+---
+
+**Resumen**: Este capítulo presenta una revisión del estado del arte sobre experiencias de intervención educativa intercultural que se han desarrollado en escuelas situadas en territorios indígenas. Se problematiza cómo estas experiencias educativas interculturales se han constituido en una forma de reparación histórica de los distintos Estados nación con los pueblos indígenas, quienes, a través de procesos de escolarización de corte eurocéntrico occidental, han visto invisibilizados sus marcos epistémicos propios en la formación de nuevos ciudadanos interculturales. De esta manera, se ha negado en el currículum escolar el saber indígena al asumirlo, desde una mirada hegemónica, como carente de validez científica. La metodología es de tipo cualitativa y considera una revisión documental-descriptiva de la literatura sobre experiencias de incorporación de saberes y conocimientos indígenas a la educación escolar. Los principales resultados nos permiten sostener que las experiencias educativas interculturales que aquí se analizan dan cuenta de oportunidades y posibilidades de articulación del saber indígena y occidental, para avanzar en un pluralismo epistemológico que promueva una innovación intercultural, facilitando la comunicación entre sujetos que pertenecen a sociedades y culturas diferentes. Concluimos que incorporar 'lo indígena' en la educación escolar contribuiría al desarrollo de la inteligencia experiencial y emocional en los niños indígenas y no indígenas, ofreciendo una educación con pertinencia social, cultural y territorial.
+
+**BibTeX**:
+
+```bibtex
+@incollection{arias2024experiencias,
+  author = {Arias, Katerin and Valdebenito, Vanessa and Villarroel, Viviana and Quintriqueo, Segundo and Lagos, Rodrigo},
+  title = {Experiencias Educativas Interculturales en la Educación Escolar: Posibilidades y Limitaciones en Contexto Indígena},
+  publisher = {Universidad Católica de Temuco},
+  pages = {68-},
+  address = {Universidad Católica de Temuco}
+}
+```

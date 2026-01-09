@@ -1,0 +1,11 @@
+---
+title: Miguel Del Pino Sepúlveda
+role: Investigador Asociado
+order: 10
+photo: /assets/images/members/Miguel Del Pino Sepúlveda.jpeg
+email: mdelpino@ucm.cl
+---
+
+**Sobre mí**:
+
+Doctor en Ciencias de la Educación (Universidad Nacional de Cuyo, Argentina). Profesor Titular de la Universidad Católica del Maule. Miembro de los centros de investigación en Educación para la Justicia Social (CIEJUS) y en Estudios Avanzados del Maule (CIEAM). Ha sido Investigador responsable de los proyectos Fondecyt regular (código 1220783), Fondecyt Iniciación (código 11180316), coinvestigador de Fondecyt regular (código 1240540), Fondecyt regular (código 1180238). Su línea de investigación es la evaluación educativa para la justicia social en el marco de la pedagogía dialógica, la educación indígena y la investigación participativa.

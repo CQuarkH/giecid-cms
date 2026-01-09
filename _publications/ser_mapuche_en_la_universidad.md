@@ -1,0 +1,22 @@
+---
+title:
+  "Ser mapuche en la universidad: Condiciones de ingreso a la formación inicial
+  docente, La Araucanía"
+date: 2019-01-01 09:00:00 -0300
+authors: Eliana Ortiz-Velosa, Katerin Arias-Ortega
+venue: Educare
+excerpt: "Tipo: Revista"
+pdf_url: /assets/pdfs/productividad/PRODUCTIVIDAD_2019_KARIAS/ART_3_SCOPUS.pdf
+---
+
+**Resumen**: El artículo problematiza en factores sociales que inciden en el ingreso y permanencia de estudiantes de origen indígena pertenecientes a culturas minoritarias involuntarias en la educación superior. Sostenemos como tesis que estudiantes mapuches enfrentan problemas personales y sociales que se constituyen en tensiones interculturales que tienen su origen, entre otros factores, a causas relacionadas a la vida académica previa al ingreso a la universidad. El objetivo es describir las características demográficas, de procedencia y académicas propias de estudiantes mapuches de la Facultad de Educación de la Universidad Católica de Temuco. La metodología empleada fue el análisis estadístico descriptivo de la base de datos de la Universidad, lo que permitió la caracterización demográfica con base en las identidades territoriales de la cual provienen este estudiantado. Se llevó a cabo la triangulación de las condiciones académicas de ingreso, esto es, el promedio de notas de la educación media (NEM), con la procedencia de estudiantes y sus preferencias de formación profesional en el área de educación. Concluimos que conocer esta triada (demografía, condiciones académicas y preferencias de carrera) nos permitirá avanzar en la gestión de estrategias y pistas de acciones para apoyar a este estudiantado en su proceso de inserción en la vida universitaria.
+
+**BibTeX**:
+
+```bibtex
+@article{ortiz2019ser,
+  author = {Ortiz-Velosa, Eliana and Arias, Katerin},
+  title = {Ser mapuche en la universidad: Condiciones de ingreso a la formación inicial docente, La Araucanía},
+  pages = {rango de páginas}
+}
+```

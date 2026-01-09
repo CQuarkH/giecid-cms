@@ -1,0 +1,31 @@
+---
+title:
+  Conocimientos Geográficos y Territoriales con Base Epistémica en la Memoria
+  Social Mapuche
+date: 2021-01-01 09:00:00 -0300
+authors:
+  Segundo Quintriqueo Millán, Katerin Arias-Ortega, Gerardo Muñoz, Hector Torres,
+  Soledad Morales, Fernando Peña
+venue: RBCS
+excerpt: "Tipo: Revista"
+pdf_url:
+  /assets/pdfs/productividad/PRODUCTIVIDAD_2021_KARIAS/ART_N°3_QUINTRIQUEO
+  Y ARIAS-ORTEGA_RBCS_2021_SCOPUS.pdf
+---
+
+**Palabras Claves**: territorio, geografía, mapuche, siglo, proceso
+**Resumen**: Con la llegada de los conquistadores europeos a Chile, en la primera mitad del siglo XVI, comenzó un proceso progresivo de invasión y usurpación del territorio histórico mapuche, con el fin de expandir los dominios de la Corona española, mediante el sometimiento militar (Bengoa, 1996). Si bien esta avanzada militar fue resistida por cerca de tres siglos en la denominada Guerra de Arauco (1536-1818), el sometimiento del pueblo mapuche y la anexión
+Artigo recebido em: 16/01/2020 Aprovado em: 28/06/2020
+de su territorio fueron concretados posteriormente por el ejército chileno en la guerra de ocupación, oficialmente conocida como Pacificación de La Araucanía (1861-1883). En este contexto, el pueblo mapuche sufrió la enajenación de su territorio y la pérdida de su autonomía, autogestión y control de la economía, siendo incorporado a la sociedad chilena bajo un modelo de inclusión social básica, como obreros o campesinos empobrecidos (Bengoa, 1996; Poblete, 2009). Este proceso dio lugar a dinámicas de transformación del territorio y su geografía, asociadas a nuevas formas de uso de los recursos naturales. Esto se materializó con mayor intensidad desde mediados del siglo XX, particularmente con la introducción de
+REVISTA BRASILEIRA DE CIÊNCIAS SOCIAIS - VOL. 36 N° 1062
+la agricultura industrial y la explotación del bosque nativo para favorecer la construcción vial, habitacional, la fabricación del carbón a leña y la producción de hidroelectricidad en la región (Correa y Mella, 2010).
+
+**BibTeX**:
+
+```bibtex
+@article{quintriqueo2021conocimientos,
+  author = {Quintriqueo, Segundo and Arias, Katerin and Muñoz, Gerardo and Torres, Hector and Morales, Soledad and Peña, Fernando},
+  title = {Conocimientos Geográficos y Territoriales con Base Epistémica en la Memoria Social Mapuche},
+  pages = {rango de páginas}
+}
+```

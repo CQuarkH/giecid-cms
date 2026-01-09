@@ -1,0 +1,22 @@
+---
+title:
+  "Educación Intercultural Bilingüe en La Araucanía: principales limitaciones
+  epistemológicas"
+date: 2019-01-01 09:00:00 -0300
+authors: Katerin Arias-Ortega, Daniel Quilaqueo, Segundo Quintriqueo Millán
+venue: FONDECYT
+excerpt: "Tipo: Revista"
+pdf_url: /assets/pdfs/productividad/PRODUCTIVIDAD_2019_KARIAS/ART_1_SCOPUS.pdf
+---
+
+**Resumen**: El tema central del artículo es una revisión del estado de arte de la educación intercultural, sustentado en las siguientes interrogantes: ¿La educación intercultural bilingüe responde a las demandas del pueblo mapuche en relación a una educación con pertinencia sociocultural?, ¿Considera otras reivindicaciones de tipo política y económica que surgen desde el Estado chileno? El objetivo es develar los alcances y limitaciones epistemológicas de la educación intercultural en La Araucanía. La metodología consistió en una revisión de la literatura normativa y científica a nivel nacional e internacional, para lograr una comprensión y explicación del problema. El enfoque teórico es la interculturalidad crítica en educación. Se concluye que para avanzar en una educación intercultural desde una epistemología contextual es necesario: 1) generar espacios en la institución escolar para la co-construcción de materiales didácticos que sistematicen contenidos educativos propios, con el apoyo de profesores, familia y comunidad; 2) incorporar métodos educativos mapuches propios en la implementación de la educación intercultural; 3) favorecer el trabajo colaborativo con los miembros de la comunidad que tienen conocimientos sobre oficios, para articular el conocimiento teórico y práctico en la sala de clases, desde la mirada indígena-occidental; y 4) promover procesos de enseñanza-aprendizaje que se realicen a partir de actividades de indagación tanto en la comunidad como en la familia y en la escuela.
+
+**BibTeX**:
+
+```bibtex
+@article{arias2019educacion,
+  author = {Arias, Katerin and Quilaqueo, Daniel and Quintriqueo, Segundo},
+  title = {Educación Intercultural Bilingüe en La Araucanía: principales limitaciones epistemológicas},
+  pages = {rango de páginas}
+}
+```

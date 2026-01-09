@@ -1,0 +1,25 @@
+---
+title:
+  "Interculturalidad para la Formación Inicial Docente: Desafíos para construir
+  un diálogo intercultural"
+date: 2016-01-01 09:00:00 -0300
+authors: Segundo Quintriqueo Millán, Soledad Morales, Daniel Quilaqueo, Katerin Arias-Ortega
+venue:
+  "Interculturalidad para la Formación Inicial Docente: Desafíos para construir
+  un diálogo intercultural"
+excerpt: "Tipo: Libro"
+pdf_url: /assets/pdfs/productividad/PRODUCTIVIDAD_2016_KARIAS/Libro-Interculturalidad-formacion-docente-UCT.pdf
+---
+
+**Extracto Palabras Preliminares**: Este texto es una invitación para acoger y generar espacios de reconocimiento y valoración de los estudiantes de pueblos originarios, que en el caso de la Facultad de Educación de la Universidad Católica de Temuco, representan un 27% de una matrícula total de 1.840 estudiantes (véase Anexo N° 1). La realidad en América Latina evidencia que existen alrededor de 40 millones de indígenas, cifra que equivale al 10% de su población total, pertenecientes a más de 600 pueblos, con sus respectivas lenguas, cosmovisiones y formas propias de organización social (Vásquez, 2015). Este hecho muestra que la diversidad constituye una riqueza para los países, particularmente en el ámbito de la educación. Chile tiene actualmente una población de más de 17.000.000 de habitantes, de los cuales 1.565.915 pertenecen a los pueblos indígenas, representando un 9,1% , de los cuales, un 84,4% pertenece al Pueblo Mapuche (Encuesta de Caracterización Socioeconómica Nacional [CASEN], 2013). De igual modo Chile es un país con una diversidad social y cultural en donde convergen culturas y lenguas distintas. Este hecho impone el desafío de convertir a la escuela en un espacio educativo, en el cual se asegure a niños y niñas de culturas y lenguas diferentes, el acceso a oportunidades de aprendizaje en lenguas vernáculas (Ministerio de Educación [MINEDUC], 2009). La incorporación de estas diferencias sociales y culturales a la educación debe ser de modo sistemático y pertinente a la realidad de los estudiantes, de acuerdo con sus costumbres, valores y cosmovisión propia.
+
+**BibTeX**:
+
+```bibtex
+@book{quintriqueo2016interculturalidad,
+  author = {Quintriqueo, Segundo and Morales, Soledad and Quilaqueo, Daniel and Arias, Katerin},
+  title = {Interculturalidad para la Formación Inicial Docente: Desafíos para construir un diálogo intercultural},
+  publisher = {Editorial},
+  address = {Ciudad o país}
+}
+```
