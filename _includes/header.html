@@ -9,11 +9,7 @@
       />
       {% endif %}
       <a href="/" class="site-title">
-        <img
-          class="site-logo"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABPUlEQVR4nO3VvUpcURTF8Z8hYBMVtRCtrSRl/GAQfAFTWuQBYmGnmCqFNlqYJo2IWAi+gqZNmmhpI0lMJakUwZBKtBo5sIXLcO6MzoeNWbDg3n3W3X8457AvT6R13KJa4yvsY7yQnYjaVSafeqzlAGlhIFMfwTwuMIu38fw+1mo1iJscINHraSoaJ082yFabASR9wYHGahqwHu4YYDX8H1Cq1WcDeNdpgHYBurCAn7jGbyzhRRngb8aX+I65DOAzjjGDPlRwiN0yQH/GQzHgTnFWALzGeQy3ol5FrvLYLRrGvwJgETsl2U+5s0qADzGay3xS+HAZWyWANK8+1hY3sP0AT0f+Df6gp6ZPN34Vci1pD18xFu+jMdJ/xA1rWS+xEjftJn5GaQuPsNkuiFC6Pffq7RSkqAT51q6zqKs7rytpSVrYGrAAAAAASUVORK5CYII="
-          alt="external-searching-the-material-for-study-under-school-syllabus-school-light-tal-revivo"
-        />
+        <img class="site-logo" src="/assets/images/logo.webp" />
         {{ site.data.site_info.group_name | default: "GIECID" }}
       </a>
     </div>
@@ -102,11 +98,16 @@
   .logo-section {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 10px;
   }
 
   .site-logo {
     color: #667eea;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-bottom: 0.3rem;
+    margin-right: 0.3rem;
   }
 
   .site-title {
