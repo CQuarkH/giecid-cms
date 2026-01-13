@@ -7,11 +7,22 @@ title: Miembros
 
 <div class="members-page">
   <div class="container">
-    <h1>Nuestro Equipo</h1>
+    <h1>{% t members.title %}</h1>
 
-    {% if site.members %} {% assign active_members = site.members | sort:
-    "order" %} {% else %} {% assign active_members = "" | split: "" %} {% endif
-    %} {% if active_members.size > 0 %}
+    {% if site.members %}
+      {% comment %} Filtrar miembros por idioma actual {% endcomment %}
+      {% assign all_members = site.members | sort: "order" %}
+      {% assign active_members = "" | split: "" %}
+      {% for member in all_members %}
+        {% if member.lang == site.lang or member.lang == nil or member.lang == "" %}
+          {% assign active_members = active_members | push: member %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign active_members = "" | split: "" %}
+    {% endif %}
+
+    {% if active_members.size > 0 %}
     <div class="members-grid">
       {% for member in active_members %}
       <a href="{{ member.url }}" class="member-card-link">
@@ -40,7 +51,7 @@ title: Miembros
             </div>
             {% endif %}
 
-            <span class="view-profile-text">Ver Perfil Completo &rarr;</span>
+            <span class="view-profile-text">{% t buttons.view_profile %} &rarr;</span>
           </div>
         </div>
       </a>
@@ -48,7 +59,7 @@ title: Miembros
     </div>
     {% else %}
     <div class="no-members">
-      <p>No hay miembros registrados en este momento.</p>
+      <p>{% t members.no_members %}</p>
     </div>
     {% endif %}
   </div>

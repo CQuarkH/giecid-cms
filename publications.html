@@ -7,23 +7,38 @@ title: Publicaciones
 
 <div class="publications-page">
   <div class="container">
-    <h1>Publicaciones</h1>
+    <h1>{% t publications.title %}</h1>
 
     <div class="year-filters">
-      <button class="filter-btn active" data-year="all">Todas</button>
-      {% capture all_years_string %} {% for pub in site.publications %} {{
-      pub.date | date: "%Y" }}| {% endfor %} {% endcapture %} {% assign years =
-      all_years_string | split: "|" | uniq | sort | reverse %} {% for year in
-      years %} {% assign year_stripped = year | strip %} {% if year_stripped !=
-      "" %}
-      <button class="filter-btn" data-year="{{ year_stripped }}">
-        {{ year_stripped }}
-      </button>
-      {% endif %} {% endfor %}
+      <button class="filter-btn active" data-year="all">{% t filters.all_feminine %}</button>
+
+      {% comment %} Filtrar publicaciones por idioma actual {% endcomment %}
+      {% assign filtered_pubs = "" | split: "" %}
+      {% for pub in site.publications %}
+        {% if pub.lang == site.lang or pub.lang == nil or pub.lang == "" %}
+          {% assign filtered_pubs = filtered_pubs | push: pub %}
+        {% endif %}
+      {% endfor %}
+
+      {% capture all_years_string %}
+        {% for pub in filtered_pubs %}
+          {{ pub.date | date: "%Y" }}|
+        {% endfor %}
+      {% endcapture %}
+
+      {% assign years = all_years_string | split: "|" | uniq | sort | reverse %}
+      {% for year in years %}
+        {% assign year_stripped = year | strip %}
+        {% if year_stripped != "" %}
+          <button class="filter-btn" data-year="{{ year_stripped }}">
+            {{ year_stripped }}
+          </button>
+        {% endif %}
+      {% endfor %}
     </div>
 
-    {% assign all_pubs = site.publications | sort: 'date' | reverse %} {% if
-    all_pubs.size > 0 %}
+    {% assign all_pubs = filtered_pubs | sort: 'date' | reverse %}
+    {% if all_pubs.size > 0 %}
     <div class="publications-list">
       {% for pub in all_pubs %} {% assign pub_year = pub.date | date: "%Y" %}
 
@@ -103,7 +118,7 @@ title: Publicaciones
 
           <div class="pub-actions">
             <a href="{{ pub.url }}" class="action-btn detail-btn">
-              Ver Detalle
+              {% t buttons.read_more %}
             </a>
 
             {% if pub.pdf_url %}
@@ -143,7 +158,7 @@ title: Publicaciones
     </div>
     {% else %}
     <div class="no-publications">
-      <p>No hay publicaciones disponibles en este momento.</p>
+      <p>{% t publications.no_publications %}</p>
     </div>
     {% endif %}
   </div>

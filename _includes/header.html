@@ -24,51 +24,77 @@
       <ul class="nav-menu">
         <li>
           <a
-            href="/"
+            href="{% if site.lang == site.default_lang %}/{% else %}/{{ site.lang }}/{% endif %}"
             class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}"
           >
-            Inicio
+            {% t nav.home %}
           </a>
         </li>
         <li>
           <a
-            href="/members.html"
-            class="{% if page.url == '/members.html' %}active{% endif %}"
+            href="{% if site.lang == site.default_lang %}/members.html{% else %}/{{ site.lang }}/members.html{% endif %}"
+            class="{% if page.url contains 'members' %}active{% endif %}"
           >
-            Equipo
+            {% t nav.members %}
           </a>
         </li>
         <li>
           <a
-            href="/publications.html"
-            class="{% if page.url == '/publications.html' %}active{% endif %}"
+            href="{% if site.lang == site.default_lang %}/publications.html{% else %}/{{ site.lang }}/publications.html{% endif %}"
+            class="{% if page.url contains 'publications' %}active{% endif %}"
           >
-            Publicaciones
+            {% t nav.publications %}
           </a>
         </li>
         <li>
           <a
-            href="/projects.html"
-            class="{% if page.url == '/projects.html' %}active{% endif %}"
+            href="{% if site.lang == site.default_lang %}/projects.html{% else %}/{{ site.lang }}/projects.html{% endif %}"
+            class="{% if page.url contains 'projects' %}active{% endif %}"
           >
-            Proyectos
+            {% t nav.projects %}
           </a>
         </li>
         <li>
           <a
-            href="/news.html"
-            class="{% if page.url == '/news.html' or page.layout == 'news' %}active{% endif %}"
+            href="{% if site.lang == site.default_lang %}/news.html{% else %}/{{ site.lang }}/news.html{% endif %}"
+            class="{% if page.url contains 'news' or page.layout == 'news' %}active{% endif %}"
           >
-            Noticias
+            {% t nav.news %}
           </a>
         </li>
         <li>
           <a
-            href="/contact.html"
-            class="{% if page.url == '/contact.html' %}active{% endif %}"
+            href="{% if site.lang == site.default_lang %}/contact.html{% else %}/{{ site.lang }}/contact.html{% endif %}"
+            class="{% if page.url contains 'contact' %}active{% endif %}"
           >
-            Contacto
+            {% t nav.contact %}
           </a>
+        </li>
+
+        <!-- Language Switcher -->
+        <li class="language-switcher">
+          <button class="lang-toggle" aria-label="Cambiar idioma">
+            <span class="current-lang">{{ site.lang | upcase }}</span>
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="currentColor">
+              <path
+                d="M1 1l5 5 5-5"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+            </svg>
+          </button>
+          <ul class="lang-menu">
+            {% if site.lang != 'es' %}
+            <li><a href="{{ page.url | remove: '/en' | remove: '/fr' }}">Español</a></li>
+            {% endif %}
+            {% if site.lang != 'en' %}
+            <li><a href="/en{{ page.url | remove: '/en' | remove: '/fr' }}">English</a></li>
+            {% endif %}
+            {% if site.lang != 'fr' %}
+            <li><a href="/fr{{ page.url | remove: '/en' | remove: '/fr' }}">Français</a></li>
+            {% endif %}
+          </ul>
         </li>
       </ul>
     </nav>
@@ -175,6 +201,81 @@
     border-bottom: 2px solid #764ba2; /* Opcional: una línea debajo */
   }
 
+  /* Language Switcher */
+  .language-switcher {
+    position: relative;
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .lang-toggle:hover {
+    background: #f5f5f5;
+    border-color: #667eea;
+    color: #667eea;
+  }
+
+  .current-lang {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    min-width: 140px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+
+  .language-switcher:hover .lang-menu,
+  .lang-toggle:focus + .lang-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-menu li {
+    margin: 0;
+    border-bottom: none;
+  }
+
+  .lang-menu a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+    border-bottom: none !important;
+  }
+
+  .lang-menu a:hover {
+    background: #f5f5f5;
+    color: #667eea;
+  }
+
   /* Mobile responsive */
   @media (max-width: 768px) {
     .mobile-menu-toggle {
@@ -196,7 +297,7 @@
     }
 
     .nav-menu.active {
-      max-height: 400px;
+      max-height: 500px;
     }
 
     .nav-menu li {
@@ -205,6 +306,46 @@
 
     .nav-menu a {
       padding: 1rem;
+    }
+
+    /* Language switcher en mobile */
+    .language-switcher {
+      width: 100%;
+    }
+
+    .lang-toggle {
+      width: 100%;
+      justify-content: space-between;
+      padding: 1rem;
+      border: none;
+      border-radius: 0;
+    }
+
+    .lang-menu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #f9f9f9;
+    }
+
+    .language-switcher:hover .lang-menu,
+    .language-switcher.active .lang-menu {
+      max-height: 200px;
+    }
+
+    .lang-menu li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .lang-menu a {
+      padding: 0.8rem 1.5rem;
     }
 
     .mobile-menu-toggle.active span:nth-child(1) {
@@ -230,6 +371,17 @@
       toggle.addEventListener("click", function () {
         this.classList.toggle("active");
         menu.classList.toggle("active");
+      });
+    }
+
+    // Language switcher toggle para mobile
+    const langToggle = document.querySelector(".lang-toggle");
+    const langSwitcher = document.querySelector(".language-switcher");
+
+    if (langToggle && window.innerWidth <= 768) {
+      langToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        langSwitcher.classList.toggle("active");
       });
     }
   });

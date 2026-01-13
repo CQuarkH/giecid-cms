@@ -7,11 +7,11 @@ title: Contacto
 
 <div class="contact-page">
   <div class="container">
-    <h1>Contacto</h1>
+    <h1>{% t nav.contact %}</h1>
 
     <div class="contact-content">
       <div class="contact-info">
-        <h2>Información de Contacto</h2>
+        <h2>{% t contact.title %}</h2>
 
         <div class="info-item">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -20,7 +20,7 @@ title: Contacto
             />
           </svg>
           <div>
-            <strong>Email</strong>
+            <strong>{% t contact.email %}</strong>
             <p>
               <a
                 href="mailto:{{ data.contact_email | default: 'contacto@giecid.cl' }}"
@@ -39,7 +39,7 @@ title: Contacto
             />
           </svg>
           <div>
-            <strong>Teléfono</strong>
+            <strong>{% t contact.phone %}</strong>
             <p>{{ data.phone }}</p>
           </div>
         </div>
@@ -51,7 +51,7 @@ title: Contacto
             />
           </svg>
           <div>
-            <strong>Dirección</strong>
+            <strong>{% t contact.address %}</strong>
             <p>{{ data.address }}</p>
           </div>
         </div>
@@ -66,13 +66,13 @@ title: Contacto
             />
           </svg>
           <div>
-            <strong>Institución</strong>
+            <strong>{% t contact.institution %}</strong>
             <p>{{ data.institution }}</p>
           </div>
         </div>
         {% endif %} {% if data.facebook or data.twitter or data.linkedin %}
         <div class="social-links">
-          <h3>Síguenos</h3>
+          <h3>{% t contact.follow_us %}</h3>
           <div class="social-icons">
             {% if data.facebook %}
             <a
@@ -170,7 +170,7 @@ title: Contacto
     {% if data.location or data.arrival_instructions %}
     <div class="location-section">
       <div class="arrival-info">
-        <h2>Cómo Llegar</h2>
+        <h2>{% t contact.how_to_get %}</h2>
         <div class="arrival-content">
           {% if data.arrival_instructions %}
           <ul class="arrival-list">

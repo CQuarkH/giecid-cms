@@ -51,6 +51,16 @@ collections:
           required: false,
         }
 
+      # Campo de idioma para multi-idioma
+      - {
+          label: "Idioma",
+          name: "lang",
+          widget: "select",
+          options: ["es", "en", "fr"],
+          default: "es",
+          hint: "Selecciona el idioma de esta publicación",
+        }
+
       - { label: "Cuerpo", name: "body", widget: "markdown" }
 
   # COLECCIÓN 2: Proyectos (Tipo FILES: edita una lista dentro de un archivo .yml)
@@ -100,6 +110,16 @@ collections:
                   required: false,
                 }
 
+              # --- IDIOMA ---
+              - {
+                  label: "Idioma",
+                  name: "lang",
+                  widget: "select",
+                  options: ["es", "en", "fr"],
+                  default: "es",
+                  hint: "Selecciona el idioma de este proyecto",
+                }
+
   # COLECCIÓN 3: Miembros (Tipo FOLDER para tener páginas de detalle)
   - name: "members"
     label: "Equipo"
@@ -125,6 +145,17 @@ collections:
           required: false,
           hint: "Solo el ID, ej: qU5-8O0AAAAJ",
         }
+
+      # Campo de idioma para multi-idioma
+      - {
+          label: "Idioma",
+          name: "lang",
+          widget: "select",
+          options: ["es", "en", "fr"],
+          default: "es",
+          hint: "Selecciona el idioma de este perfil de miembro",
+        }
+
       - {
           label: "Biografía Completa",
           name: "body",

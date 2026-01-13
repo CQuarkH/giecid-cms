@@ -6,6 +6,7 @@ projects:
     year_end: 2026
     description: "Este proyecto investiga las estrategias pedagógicas utilizadas por docentes tradicionales para la enseñanza del Mapudungun en contextos escolares formales, proponiendo un modelo de integración curricular."
     url: "https://anid.cl/proyectos/ejemplo"
+    lang: "es"
 
   - name: "Saberes Ancestrales y Tecnología Digital"
     funding_source: "Fondo de Innovación Docente"
@@ -14,3 +15,4 @@ projects:
     year_end: 2024
     description: "Desarrollo de herramientas digitales colaborativas para la preservación de relatos orales en comunidades costeras."
     url: ""
+    lang: "es"

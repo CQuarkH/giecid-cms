@@ -16,8 +16,8 @@ layout: default
           />
         </div>
         <div class="carousel-caption">
-          <h1>{{ site.data.home.hero_title | default: "Bienvenidos a GIECID" }}</h1>
-          <p class="hero-subtitle">Grupo de Investigación en Educación en Contextos Indígenas y Diversos</p>
+          <h1>{% t hero.welcome %}</h1>
+          <p class="hero-subtitle">{% t hero.subtitle %}</p>
         </div>
       </div>
 
@@ -74,7 +74,7 @@ layout: default
 
 <section class="about-section">
   <div class="container">
-    <h2>{{ site.data.about.title | default: "Sobre Nosotros" }}</h2>
+    <h2>{% t sections.about_us %}</h2>
 
     {% if site.data.about.content %} {{ site.data.about.content | markdownify }}
     {% else %}
@@ -105,11 +105,22 @@ layout: default
 
 <section class="team-preview">
   <div class="container">
-    <h2>Nuestro Equipo</h2>
+    <h2>{% t sections.our_team %}</h2>
 
-    {% if site.members %} {% assign active_members = site.members | sort:
-    "order" %} {% else %} {% assign active_members = "" | split: "" %} {% endif
-    %} {% if active_members.size > 0 %}
+    {% if site.members %}
+      {% comment %} Filtrar miembros por idioma actual {% endcomment %}
+      {% assign all_members = site.members | sort: "order" %}
+      {% assign active_members = "" | split: "" %}
+      {% for member in all_members %}
+        {% if member.lang == site.lang or member.lang == nil or member.lang == "" %}
+          {% assign active_members = active_members | push: member %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign active_members = "" | split: "" %}
+    {% endif %}
+
+    {% if active_members.size > 0 %}
     <div class="members-carousel">
       {% for member in active_members limit:6 %}
       <div class="member-card-small">
@@ -126,9 +137,7 @@ layout: default
     </div>
 
     <div class="text-center mt-4">
-      <a href="/members.html" class="btn btn-primary"
-        >Conocer al equipo completo</a
-      >
+      <a href="{% if site.lang == site.default_lang %}/members.html{% else %}/{{ site.lang }}/members.html{% endif %}" class="btn btn-primary">{% t buttons.view_full_team %}</a>
     </div>
     {% endif %}
   </div>
@@ -137,10 +146,18 @@ layout: default
 {% if site.data.home.show_recent_publications %}
 <section class="recent-publications">
   <div class="container">
-    <h2>Publicaciones Recientes</h2>
+    <h2>{% t sections.recent_publications %}</h2>
 
-    {% assign recent_pubs = site.publications | sort: 'date' | reverse %} {% if
-    recent_pubs.size > 0 %}
+    {% comment %} Filtrar publicaciones por idioma actual {% endcomment %}
+    {% assign all_pubs = site.publications | sort: 'date' | reverse %}
+    {% assign recent_pubs = "" | split: "" %}
+    {% for pub in all_pubs %}
+      {% if pub.lang == site.lang or pub.lang == nil or pub.lang == "" %}
+        {% assign recent_pubs = recent_pubs | push: pub %}
+      {% endif %}
+    {% endfor %}
+
+    {% if recent_pubs.size > 0 %}
     <div class="publications-list">
       {% for pub in recent_pubs limit:3 %}
       <div class="publication-item">
@@ -175,12 +192,10 @@ layout: default
     </div>
 
     <div class="text-center mt-4">
-      <a href="/publications.html" class="btn btn-primary"
-        >Ver todas las publicaciones</a
-      >
+      <a href="{% if site.lang == site.default_lang %}/publications.html{% else %}/{{ site.lang }}/publications.html{% endif %}" class="btn btn-primary">{% t buttons.view_all_publications %}</a>
     </div>
     {% else %}
-    <p>No hay publicaciones disponibles.</p>
+    <p>{% t publications.no_publications %}</p>
     {% endif %}
   </div>
 </section>

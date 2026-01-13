@@ -7,13 +7,21 @@ title: Proyectos
 
 <div class="projects-page">
   <div class="container">
-    <h1>Proyectos de Investigación</h1>
+    <h1>{% t projects.title %}</h1>
 
-    {% assign projects = site.projects %} {% assign years =
-    projects | map: 'start_year' | uniq | sort | reverse %}
+    {% comment %} Filtrar proyectos por idioma actual {% endcomment %}
+    {% assign all_projects = site.data.projects.projects %}
+    {% assign projects = "" | split: "" %}
+    {% for project in all_projects %}
+      {% if project.lang == site.lang or project.lang == nil or project.lang == "" %}
+        {% assign projects = projects | push: project %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign years = projects | map: 'year_start' | uniq | sort | reverse %}
 
     <div class="year-filters">
-      <button class="filter-btn active" data-year="all">Todos</button>
+      <button class="filter-btn active" data-year="all">{% t filters.all_masculine %}</button>
       {% for year in years %}
       <button class="filter-btn" data-year="{{ year }}">{{ year }}</button>
       {% endfor %}
@@ -22,25 +30,23 @@ title: Proyectos
     {% if projects.size > 0 %}
     <div class="projects-list">
       {% for project in projects %}
-      <div class="project-card" data-year="{{ project.start_year }}">
+      <div class="project-card" data-year="{{ project.year_start }}">
         <div class="card-header">
           <div class="meta-top">
             <span class="date-badge">
-              {{ project.start_year }} {% if project.end_year %} - {{
-              project.end_year }}{% else %} - Presente{% endif %}
+              {{ project.year_start }} {% if project.year_end %} - {{
+              project.year_end }}{% else %} - Presente{% endif %}
             </span>
-            {% if project.funding %}
-            <span class="funding-badge"> {{ project.funding }} </span>
+            {% if project.funding_source %}
+            <span class="funding-badge"> {{ project.funding_source }} </span>
             {% endif %}
           </div>
 
-          <h2>
-            <a href="{{ project.url }}" class="project-title-link">{{ project.title }}</a>
-          </h2>
+          <h2>{{ project.name }}</h2>
         </div>
 
         <div class="project-body">
-          {% if project.investigators and project.investigators.size > 0 %}
+          {% if project.members and project.members != '' %}
           <div class="project-members">
             <svg
               class="icon-small"
@@ -57,26 +63,21 @@ title: Proyectos
                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
               ></path>
             </svg>
-            <span><strong>Equipo:</strong> {{ project.investigators | join: ', ' }}</span>
+            <span><strong>{% t projects.team %}:</strong> {{ project.members }}</span>
           </div>
           {% endif %}
 
-          {% if project.excerpt %}
+          {% if project.description %}
           <div class="project-description">
-            <p>{{ project.excerpt }}</p>
-          </div>
-          {% endif %}
-
-          {% if project.code and project.code != '' %}
-          <div class="project-code">
-            <strong>Código:</strong> {{ project.code }}
+            <p>{{ project.description }}</p>
           </div>
           {% endif %}
         </div>
 
+        {% if project.url and project.url != '' %}
         <div class="project-footer">
-          <a href="{{ project.url }}" class="link-btn">
-            Ver Detalles
+          <a href="{{ project.url }}" class="link-btn" target="_blank">
+            {% t buttons.view_project %}
             <svg
               width="14"
               height="14"
@@ -93,12 +94,13 @@ title: Proyectos
             </svg>
           </a>
         </div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
     {% else %}
     <div class="no-projects">
-      <p>No hay proyectos listados en este momento.</p>
+      <p>{% t projects.no_projects %}</p>
     </div>
     {% endif %}
   </div>
